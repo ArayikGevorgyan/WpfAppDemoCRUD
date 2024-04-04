@@ -2,7 +2,7 @@ README
 
 ---
 
-# WpfAppDemoCRUD
+# WpfAppCRUD
 
 WpfAppDemoCRUD is a C# application showcasing CRUD (Create, Read, Update, Delete) operations using Entity Framework Core 
 and a graphical user interface (GUI) developed with Windows Presentation Foundation (WPF).
