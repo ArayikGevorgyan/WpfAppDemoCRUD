@@ -16,7 +16,7 @@ using WpfAppDemoCRUD.Data;
 
 namespace WpfAppDemoCRUD
 {
-
+     // Main window class
     public partial class MainWindow : Window
     {
         ProductDbContext dbContext;
@@ -31,12 +31,14 @@ namespace WpfAppDemoCRUD
             AddNewProductGrid.DataContext = NewProduct;
             
         }
-
+        
+        // Method to fetch products from the database
         private void GetProducts()
         {
             ProductDG.ItemsSource = dbContext.Products.ToList();
         }
-
+        
+        // Event handler to add a new product
         private void AddProduct(object s, RoutedEventArgs e)
         {
             dbContext.Products.Add(NewProduct);
@@ -48,20 +50,22 @@ namespace WpfAppDemoCRUD
         }
 
         Product selectedProduct = new Product();
+
+        // Event handler to prepare for editing a product
         private void UpdateProductForEdit(object s, RoutedEventArgs e)
         {
             selectedProduct = (s as FrameworkElement).DataContext as Product;
             UpdateProductGrid.DataContext = selectedProduct;
         }
 
-
+        // Event handler to update a product
         private void UpdateProduct(object s, RoutedEventArgs e)
         {
             dbContext.Update(selectedProduct);
             dbContext.SaveChanges();
             GetProducts();
         }
-
+        // Event handler to delete a product
         private void DeleteProduct(object s, RoutedEventArgs e)
         {
             var productToBeDeleted = (s as FrameworkElement).DataContext as Product;
