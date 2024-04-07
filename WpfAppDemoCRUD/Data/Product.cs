@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfAppDemoCRUD.Data
 {
+// Product class representing a product entity
     public class Product
     {
         public int Id { get; set; }
