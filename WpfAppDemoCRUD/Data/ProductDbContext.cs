@@ -12,11 +12,12 @@ namespace WpfAppDemoCRUD.Data
 
         public ProductDbContext(DbContextOptions<ProductDbContext> options) : base(options)
         {
+        // Ensure the database is created
             Database.EnsureCreated();
         }
-
+        // DbSet for products table
         public DbSet<Product> Products { get; set; }
-
+        //Seed initial data into the database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(GetProducts());
@@ -24,7 +25,9 @@ namespace WpfAppDemoCRUD.Data
         }
 
         private Product[] GetProducts()
-        {
+        {//this part will make sure that this 4 reccords will be available once we have database, 
+         //   but also I used  Database.EnsureCreated(); to be sure that database has been created.
+
             return new Product[]
             {
                 new Product { Id = 1, Name = "Tshirt", Description = "Red", Price = 19.99, Unit =5},
